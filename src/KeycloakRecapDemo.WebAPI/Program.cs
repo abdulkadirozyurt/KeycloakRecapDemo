@@ -1,29 +1,29 @@
 using Keycloak.AuthServices.Authentication;
-using Keycloak.AuthServices.Authorization;
-using Scalar.AspNetCore;
+using KeycloakRecapDemo.WebAPI.Middlewares;
+using KeycloakRecapDemo.WebAPI.ServiceRegistrars;
 
 var builder = WebApplication.CreateBuilder(args);
 
-
-builder.Services.AddKeycloakWebApiAuthentication(builder.Configuration);
-builder.Services.AddAuthorization();
-
 builder.Services.AddControllers();
-builder.Services.AddOpenApi();
+builder.Services.AddOpenApiServices();
 
 var app = builder.Build();
 
-if (app.Environment.IsDevelopment())
-{
-    app.MapOpenApi();
-}
+// if (app.Environment.IsDevelopment())
+// {
+//     app.MapOpenApi();
+// }
+
+
+app.MapOpenApi();
 
 app.UseHttpsRedirection();
 
 app.UseAuthentication();
 app.UseAuthorization();
-app.MapScalarApiReference();
 
-app.MapControllers().RequireAuthorization();
+app.UseScalarMiddleware();
+
+app.MapControllers();
 
 app.Run();
