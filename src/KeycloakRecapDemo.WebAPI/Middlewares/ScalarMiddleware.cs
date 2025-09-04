@@ -10,9 +10,9 @@ public static class ScalarMiddleware
         {
             options.Theme = ScalarTheme.Mars;
             options.DarkMode = true;
-            options.AddServer(
-                new ScalarServer("https://localhost:7251", "Local HTTPS Development Server")
-            );
+            // options.AddServer(
+            //     new ScalarServer("https://localhost:7251", "Local HTTPS Development Server")
+            // );
             options.AddServer(
                 new ScalarServer("http://localhost:5090", "Local HTTP Development Server")
             );

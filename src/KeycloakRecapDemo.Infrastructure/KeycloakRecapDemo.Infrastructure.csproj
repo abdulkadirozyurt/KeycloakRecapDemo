@@ -11,10 +11,12 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
+    <PackageReference Include="Microsoft.Extensions.Options.ConfigurationExtensions" Version="9.0.8" />
     <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="9.0.4" />
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\KeycloakRecapDemo.Application\KeycloakRecapDemo.Application.csproj" />
     <ProjectReference Include="..\KeycloakRecapDemo.Domain\KeycloakRecapDemo.Domain.csproj" />
   </ItemGroup>
 

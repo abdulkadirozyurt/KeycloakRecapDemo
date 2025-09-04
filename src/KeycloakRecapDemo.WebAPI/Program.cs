@@ -1,5 +1,6 @@
 using Keycloak.AuthServices.Authentication;
 using Keycloak.AuthServices.Authorization;
+using KeycloakRecapDemo.Application;
 using KeycloakRecapDemo.Infrastructure;
 using KeycloakRecapDemo.WebAPI.Middlewares;
 using KeycloakRecapDemo.WebAPI.ServiceRegistrars;
@@ -8,10 +9,8 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 var builder = WebApplication.CreateBuilder(args);
 var configuration = builder.Configuration;
 
-
+builder.Services.AddApplicationServices();
 builder.Services.AddInfrastructureServices(configuration);
-
-
 
 
 builder.Services.AddKeycloakWebApiAuthentication(configuration, options =>
